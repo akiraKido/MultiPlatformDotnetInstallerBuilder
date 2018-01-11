@@ -1,6 +1,9 @@
 #!/bin/sh
 
-INSTALL_PATH="/usr/bin/multipftest"
+####################################################################
+# The install path will be added by build.ps1
+# INSTALL_PATH="..."
+####################################################################
 
 if [ -d "${INSTALL_PATH}" ]; then
 

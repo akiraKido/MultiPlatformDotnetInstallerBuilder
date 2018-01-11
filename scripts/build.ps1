@@ -1,8 +1,13 @@
+$ProductName = "MultiPlatformTest"
+
+# install paths for each platform
+$UbuntuProductPath = "/usr/bin/$ProductName"
+
 $ScriptPath = (Split-Path $MyInvocation.MyCommand.Path -Parent)
 
 $Source = "$ScriptPath\..\src"
-$CsProject = "$Source\MultiPlatformTest\MultiPlatformTest.csproj"
-$PublishBasePath = "$Source\MultiPlatformTest\bin\Release\netcoreapp2.0"
+$CsProject = "$Source\$ProductName\$ProductName.csproj"
+$PublishBasePath = "$Source\$ProductName\bin\Release\netcoreapp2.0"
 
 $InstallerOutputPath = "$ScriptPath\installers\" + (Get-Date -Format yyyyMMdd-HHmm)
 
@@ -36,5 +41,9 @@ foreach($target in $Targets)
     if($target.Contains("ubuntu"))
     {
         Copy-Item $UbuntuInstallScript $OutputPath\install.sh
+
+        $data = Get-Content $OutputPath\install.sh
+        $data[1] = $data[1] + "`nINSTALL_PATH=`"$UbuntuProductPath`""
+        $data | Out-File $OutputPath\install.sh
     }
 }
