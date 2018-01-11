@@ -28,6 +28,8 @@ By running `scripts\build.ps1`, the following occurs:
 
 ### Ubuntu
 
+`scripts/install-scripts/ubuntu.sh`
+
 - Copies the contents of `publish` into `/usr/bin/[name]`
-    - Edit `scripts/install-scripts/ubuntu.sh` to change [name]
+    - Edit shell script to change [name]
 - Adds the directory as a PATH into `~/.profile`
