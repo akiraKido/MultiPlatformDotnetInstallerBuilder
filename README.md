@@ -12,17 +12,11 @@ Currently available platforms:
 ## How to use
 
 1. Place your source code into the `src` directory as done in this project.
-1. Change the `$CsProject` and `$PublishBasePath` variables in `scripts\build.ps1` to appropriate values.
+    - This program currently assumes that you have one solution with one project.
+1. Change the `$ProductName` to your Solution's name, i.e. the name of your `*.csproj`.
+    - This program currently assumes that your Solution and Csproject have the same name.
 1. Run `scripts\build.ps1` by opening a command prompt and running `..> powershell [path to scripts\build.ps1]`
 1. Installers for each platform will be written in `\scripts\installers\yyyyMMdd-HHmm\*`.
-
-## What this actually does
-
-By running `scripts\build.ps1`, the following occurs:
-
-1. Cleans and builds the target project using the `dotnet` command.
-1. Publishes for each platform specified in the `RuntimeIdentifiers` tag in the csproj.
-1. Copies the installer script into each installer directory.
 
 ## What the installer does
 
@@ -30,6 +24,6 @@ By running `scripts\build.ps1`, the following occurs:
 
 `scripts/install-scripts/ubuntu.sh`
 
-- Copies the contents of `publish` into `/usr/bin/[name]`
-    - Edit shell script to change [name]
-- Adds the directory as a PATH into `~/.profile`
+- Copies the contents of `publish` into `/usr/bin/[ProductName]`.
+    - `[ProductName]` corresponds to `$ProductName` in `scripts\build.ps1`
+- Adds the directory as a PATH into `~/.profile` if necessary.
