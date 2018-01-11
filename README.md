@@ -24,9 +24,9 @@ By running `scripts\build.ps1`, the following occurs:
 1. Publishes for each platform specified in the `RuntimeIdentifiers` tag in the csproj.
 1. Copies the installer script into each installer directory.
 
-### Platform specific
+## What the installer does
 
-#### Ubuntu
+### Ubuntu
 
 - Copies the contents of `publish` into `/usr/bin/[name]`
     - Edit `scripts/install-scripts/ubuntu.sh` to change [name]
